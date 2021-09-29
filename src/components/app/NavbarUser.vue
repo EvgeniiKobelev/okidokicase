@@ -8,6 +8,11 @@
 
         <span class="black-text">OkiDokiCase</span>
       </div>
+      <div>
+        <span v-if="this.info.sending" class="new badge" data-badge-caption=""
+          >Подарок в пути</span
+        >
+      </div>
       <ul class="right">
         <li>
           <a

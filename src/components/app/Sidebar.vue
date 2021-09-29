@@ -17,6 +17,7 @@ export default {
         { title: "Новоcти", url: "/news" },
         { title: "FAQ", url: "/faq" },
         { title: "Правила и документы", url: "/" },
+        { title: "Отзывы", url: "/" },
       ],
     };
   },

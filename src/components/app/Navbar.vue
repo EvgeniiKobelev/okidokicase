@@ -4,7 +4,7 @@
       <a href="/" class="brand-logo center"
         ><img :src="require('@/assets/logo.png')" height="36"
       /></a>
-      <ul id="slide-out" class="sidenav" ref="slidenav">
+      <ul id="slide-out" class="sidenav" ref="sidenav">
         <li v-for="link in links" :key="link.url">
           <router-link
             :to="link.url"
@@ -12,6 +12,7 @@
             >{{ link.title }}</router-link
           >
         </li>
+        <li><a href="#rules">Правила и документы</a></li>
       </ul>
       <ul class="left">
         <li>
@@ -42,13 +43,12 @@ export default {
       links: [
         { title: "Главная", url: "/" },
         { title: "Новоcти", url: "/news" },
-        { title: "FAQ", url: "/faq" },
-        { title: "Правила и документы", url: "/" },
+        { title: "Отзывы", url: "/cases" },
       ],
     };
   },
   mounted() {
-    M.Sidenav.init(this.$refs.slidenav);
+    M.Sidenav.init(this.$refs.sidenav);
   },
 };
 </script>

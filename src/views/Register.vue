@@ -36,6 +36,59 @@
               >Введите ваше имя</small
             >
           </div>
+          <div class="input-field">
+            <input id="pochtindex" type="text" v-model="pochtindex" />
+            <label for="pochtindex">Почтовый индекс</label>
+            <small
+              class="helper-text"
+              data-error="Не бывает такого"
+              data-success="Успех!"
+              >Введите почтовый индекс</small
+            >
+          </div>
+          <div class="input-field">
+            <input id="regage" type="number" v-model.number="regage" />
+            <label for="regage">Введите возраст</label>
+            <small
+              class="helper-text"
+              data-error="Не бывает такого"
+              data-success="Успех!"
+              >Ваш возраст</small
+            >
+          </div>
+          <div class="input-field">
+            <select v-model="reggender" ref="reggender">
+              <option value="0" disabled selected>Пол</option>
+              <option value="Неопределенный">Неопределенный</option>
+              <option value="Муж">Мужской</option>
+              <option value="Жен">Женский</option>
+            </select>
+            <label>Пол</label>
+          </div>
+          <div class="input-field">
+            <select v-model="country" ref="selectcountry">
+              <option value="none" disabled selected>Выберите страну</option>
+              <option value="RU">Россия</option>
+              <option value="UK">Украина</option>
+            </select>
+            <label>Выберите страну</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              id="favorites"
+              type="text"
+              class="validate"
+              v-model="myfavorites"
+            />
+            <label for="favorites">Предпочтения</label>
+            <small
+              class="helper-text"
+              data-error="Не бывает такого"
+              data-success="Успех!"
+              >Например, "Люблю красный цвет"</small
+            >
+          </div>
           <div class="file-field input-field">
             <div class="btn orange accent-4">
               <span>Загрузить аватар</span>
@@ -53,7 +106,10 @@
           <p>
             <label>
               <input type="checkbox" v-model="agree" />
-              <span>С правилами согласен</span>
+              <span
+                >С правилами
+                <router-link to="/rules">согласен</router-link></span
+              >
             </label>
           </p>
         </div>
@@ -85,8 +141,17 @@ export default {
       email: "",
       password: "",
       name: "",
+      pochtindex: "",
+      country: "",
+      myfavorites: "",
       agree: false,
+      reggender: "",
+      regage: null,
     };
+  },
+  mounted() {
+    M.FormSelect.init(this.$refs.selectcountry);
+    M.FormSelect.init(this.$refs.reggender);
   },
   methods: {
     previewImage(event) {
@@ -99,6 +164,14 @@ export default {
         name: this.name,
         date: new Date().setHours(23, 59, 59, 999),
         imageData: this.imageData,
+        sendPage: false,
+        activeProject: false,
+        tracking: false,
+        pochtindex: this.pochtindex,
+        country: this.country,
+        myfavorites: this.myfavorites,
+        reggender: this.reggender,
+        regage: this.regage,
       };
       try {
         await this.$store.dispatch("register", formData);

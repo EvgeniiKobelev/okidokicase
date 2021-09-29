@@ -12,7 +12,7 @@
       </main>
 
       <div class="fixed-action-btn">
-        <router-link class="btn-floating btn-large blue" to="/">
+        <router-link class="btn-floating btn-large orange accent-4" to="/">
           <i class="large material-icons">contact_support</i>
         </router-link>
       </div>

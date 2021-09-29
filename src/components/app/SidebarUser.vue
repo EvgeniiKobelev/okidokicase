@@ -15,7 +15,7 @@ export default {
       links: [
         { title: "OkiDoki", url: "/okidoki" },
         { title: "Профиль", url: "/profile" },
-        { title: "Мои кейсы", url: "/cases" },
+        { title: "Отзывы", url: "/cases" },
       ],
     };
   },

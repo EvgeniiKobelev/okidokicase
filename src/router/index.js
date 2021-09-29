@@ -44,10 +44,45 @@ const routes = [
     component: () => import("../views/Profile.vue"),
   },
   {
+    path: "/profile/otpr-:id",
+    name: "Otpr",
+    props: true,
+    meta: { layout: "main", auth: true },
+    component: () => import("../views/Otpr.vue"),
+  },
+  {
+    path: "/profile/pol-:id",
+    name: "Pol",
+    props: true,
+    meta: { layout: "main", auth: true },
+    component: () => import("../views/Pol.vue"),
+  },
+  {
+    path: "/rules",
+    name: "Rules",
+    meta: { layout: "empty" },
+    component: () => import("../views/Rules.vue"),
+  },
+  {
     path: "/okidoki",
     name: "okidoki",
     meta: { layout: "main", auth: true },
     component: () => import("../views/OkiDoki.vue"),
+  },
+  {
+    path: "/polozhenie",
+    name: "polozhenie",
+    component: () => import("../views/Polozhenie.vue"),
+  },
+  {
+    path: "/politicconf",
+    name: "politicconf",
+    component: () => import("../views/Politicconf.vue"),
+  },
+  {
+    path: "/rulesforuser",
+    name: "rulesforuser",
+    component: () => import("../views/Rulesforuser.vue"),
   },
 ];
 

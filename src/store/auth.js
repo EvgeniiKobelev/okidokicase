@@ -12,11 +12,31 @@ export default {
     },
     async register(
       { dispatch, commit },
-      { email, password, name, date, imageData }
+      {
+        email,
+        password,
+        name,
+        date,
+        imageData,
+        sendPage,
+        activeProject,
+        tracking,
+        pochtindex,
+        country,
+        myfavorites,
+        reggender,
+        regage,
+      }
     ) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
         const uid = await dispatch("getUid");
+        await firebase
+          .auth()
+          .currentUser.sendEmailVerification()
+          .then(() => {
+            console.log("Письмо отправлено на почту");
+          });
         // add avatar
         if (imageData === undefined) {
           const storageRef = firebase.storage().ref();
@@ -25,9 +45,18 @@ export default {
           // add users
           await firebase.database().ref(`/users/${uid}/info`).set({
             stars: 0,
+            KolichestvoOtzivov: 0,
             name: name,
             date: date,
             avatarImg: downloadUrl,
+            sendPage: sendPage,
+            activeProject: activeProject,
+            tracking: tracking,
+            pochtindex: pochtindex,
+            country: country,
+            myfavorites: myfavorites,
+            reggender: reggender,
+            regage: regage,
           });
         } else {
           const metaData = {
@@ -43,6 +72,14 @@ export default {
             name: name,
             date: date,
             avatarImg: downloadUrl,
+            sendPage: false,
+            activeProject: false,
+            tracking: tracking,
+            pochtindex: pochtindex,
+            country: country,
+            myfavorites: myfavorites,
+            reggender: reggender,
+            regage: regage,
           });
         }
       } catch (error) {
